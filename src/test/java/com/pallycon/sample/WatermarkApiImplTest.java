@@ -54,28 +54,24 @@ public class WatermarkApiImplTest {
          */
 //        makeUrl(result, ApiUrl.PACK_JOB_LIST);
 //        makeUrl(result, ApiUrl.PACK_JOB_REGISTER);
-//        makeUrl(result, ApiUrl.SESSION_WATERMARK_URL);
-//        makeUrl(result, ApiUrl.SESSION_WATERMARK_URL_AKAMAI);
+//        makeUrl(result, ApiUrl.SESSION_WATERMARK_URL_GENERATE);
+//        makeUrl(result, ApiUrl.SESSION_WATERMARK_TOKEN_GENERATE);
+//        makeUrl(result, ApiUrl.SESSION_LIST);
 //        makeUrl(result, ApiUrl.STORAGE_LIST);
 //        makeUrl(result, ApiUrl.STORAGE_REGISTER);
 //        makeUrl(result, ApiUrl.STORAGE_UPDATE);
+//        makeUrl(result, ApiUrl.DETECT_REGISTER);
+//        makeUrl(result, ApiUrl.DETECT_LIST);
+//        makeUrl(result, ApiUrl.DETECT_DETAIL);
     }
 
     // can get the result as a type of JSON
     private void makeUrl(String result, ApiUrl apiUrl) {
-        String url = apiUrl.getUrl();
+        String url = apiUrl.makeRequestUrl(result, watermarkApi);
         String method = apiUrl.getMethod();
 
-        StringBuffer sb = new StringBuffer();
-        sb.append(url);
-        sb.append(watermarkApi.getSiteId());
-        sb.append("?");
-        sb.append("pallycon-apidata");
-        sb.append("=");
-        sb.append(result);
-
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("url", sb.toString());
+        jsonObject.put("url", url);
         jsonObject.put("method", method);
         logger.info("url        : " + jsonObject.toJSONString());
     }
