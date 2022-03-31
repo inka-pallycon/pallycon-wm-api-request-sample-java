@@ -1,7 +1,7 @@
 package com.pallycon.sample.watermark;
 
 import com.pallycon.sample.util.StringEncrypter;
-import com.sun.istack.internal.NotNull;
+import org.jetbrains.annotations.NotNull;
 import org.json.simple.JSONObject;
 
 import java.nio.charset.StandardCharsets;
